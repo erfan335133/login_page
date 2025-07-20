@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Code from "./pages/Code";
-import { useState } from "react";
+import Dashboard from "./pages/Dashboard";
 
 type User = {
   name: string;
@@ -27,6 +28,7 @@ function App() {
             path="/code"
             element={<Code mobile={userValue?.mobile || ""} />}
           />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </>

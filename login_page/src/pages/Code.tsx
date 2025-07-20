@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserInfo from "./UserInfo";
 import Timer from "./Timer";
@@ -8,6 +8,8 @@ type Mobile = {
 };
 
 const Code: React.FC<Mobile> = ({ mobile }) => {
+  const [text, setText] = useState("");
+  const [showText, setShowText] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     if (!mobile || mobile.trim() === "") {
@@ -26,6 +28,7 @@ const Code: React.FC<Mobile> = ({ mobile }) => {
     e.target.value = value;
 
     if (value && index < 3) refer.current[index + 1]?.focus();
+    if (index === 3) validation();
   };
 
   const handleKeyDown = (
@@ -34,6 +37,33 @@ const Code: React.FC<Mobile> = ({ mobile }) => {
   ) => {
     if (e.key === "Backspace" && !e.currentTarget.value && index > 0) {
       refer.current[index - 1]?.focus();
+    }
+  };
+
+  const validation = () => {
+    const code = refer.current.map((input) => input?.value || "").join("");
+    if (code === "1111") {
+      setShowText(true);
+      setText("Correct code");
+
+      setTimeout(() => {
+        setShowText(false);
+        setText("");
+        refer.current.forEach((el) => {
+          if (el) el.value = "";
+        });
+        navigate("/dashboard");
+      }, 3000);
+    } else {
+      setShowText(true);
+      setText("Wrong code");
+      setTimeout(() => {
+        setShowText(false);
+        setText("");
+        refer.current.forEach((el) => {
+          if (el?.value) el.value = "";
+        });
+      }, 3000);
     }
   };
 
@@ -56,6 +86,7 @@ const Code: React.FC<Mobile> = ({ mobile }) => {
           );
         })}
       </div>
+      <h3 className="text-xl text-white">{showText && text}</h3>
       <Timer />
     </div>
   );
