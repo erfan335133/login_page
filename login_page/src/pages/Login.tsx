@@ -48,7 +48,7 @@ const Login: React.FC<GetValue> = ({ getValue }) => {
       onSubmit={handleSubmit(submit)}
       className="w-full h-screen bg-[#1e1e1e] flex justify-center items-center"
     >
-      <div className="min-w-[40%] h-[60%] bg-white rounded flex flex-col justify-center items-center relative">
+      <div className="min-w-[50%] h-[50%] bg-white rounded flex flex-col justify-center items-center relative">
         <p className="absolute top-[25px] text-red-400">
           {errors.name
             ? errors.name?.message
@@ -61,22 +61,22 @@ const Login: React.FC<GetValue> = ({ getValue }) => {
         <input
           {...register("name")}
           type="text"
-          className="border-0 border-b-[2px] border-purple-400 w-[30%] h-[50px] m-[15px]  bg-transparent outline-none focus:border-gray-300"
+          className="border-0 border-b-[2px] border-purple-400 w-[75%] h-[50px] m-[15px]  bg-transparent outline-none focus:border-gray-300"
           placeholder="Enter name :"
         />
         <input
           {...register("mobile")}
           type="text"
-          className="border-0 border-b-[2px] border-purple-400 w-[30%] h-[50px] m-[15px] bg-transparent outline-none focus:border-gray-300"
+          className="border-0 border-b-[2px] border-purple-400 w-[75%] h-[50px] m-[15px] bg-transparent outline-none focus:border-gray-300"
           placeholder="Enter mobile :"
         />
         <input
           {...register("password")}
           type="password"
-          className="border-0 border-b-[2px] border-purple-400 w-[30%] h-[50px] m-[15px] bg-transparent outline-none focus:border-gray-300"
+          className="border-0 border-b-[2px] border-purple-400 w-[75%] h-[50px] m-[15px] bg-transparent outline-none focus:border-gray-300"
           placeholder="Enter password :"
         />
-        <button className="w-[15%] h-[50px] bg-[#1e1e1e] rounded-lg mt-[50px] text-white">
+        <button className="w-[15%] min-w-[60px] h-[50px] bg-[#1e1e1e] rounded-lg mt-[50px] text-white">
           Login
         </button>
       </div>

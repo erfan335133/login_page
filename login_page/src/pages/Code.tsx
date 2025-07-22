@@ -70,7 +70,7 @@ const Code: React.FC<Mobile> = ({ mobile }) => {
   return (
     <div className="w-full h-screen bg-[#1e1e1e] flex flex-col justify-center items-center">
       <UserInfo mobile={mobile} />
-      <div className="w-full h-auto flex justify-center items-center">
+      <div className="w-full h-auto flex justify-around items-center sm:justify-center md:justify-center">
         {[0, 1, 2, 3].map((index) => {
           return (
             <input
@@ -81,7 +81,7 @@ const Code: React.FC<Mobile> = ({ mobile }) => {
               ref={(el) => {
                 refer.current[index] = el;
               }}
-              className="appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none cursor-pointer w-[80px] h-[80px] bg-blue-300 m-[70px] rounded-lg text-center flex items-center justify-center text-2xl"
+              className="appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none cursor-pointer w-[55px] h-[55px] m-[15px] bg-blue-300 rounded-lg text-center flex items-center justify-center text-2xl sm:w-[70px] sm:h-[70px] sm:m-[35px] md:w-[80px] md:h-[80px] md:m-[40px] lg:w-[100px] lg:h-[100px] lg:m-[50px]"
             />
           );
         })}

@@ -16,7 +16,9 @@ const Timer = () => {
       setSecond((prev) => {
         if (prev <= 1) {
           setSendAgain(true);
-          clearInterval(intervalRef.current);
+          if (intervalRef.current !== null) {
+            clearInterval(intervalRef.current);
+          }
           return 0;
         }
         return prev - 1;
@@ -45,8 +47,10 @@ const Timer = () => {
       </h2>
       <button
         onClick={sendAgain ? send : undefined}
-        className={`text-lg bg-white w-[140px] h-[50px] rounded mt-[20px] ${
-          sendAgain ? "opacity-100" : "opacity-25"
+        className={`text-[15px] font-bold bg-white w-auto h-[40px] rounded mt-[20px] ${
+          sendAgain
+            ? "opacity-100"
+            : "opacity-25 sm:text-[17px] md:text-[20px] md:h-[50px] lg:text-[22px] lg:h-[55px]"
         }
         }`}
       >
